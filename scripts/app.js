@@ -9,45 +9,27 @@ let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10,
   81, 82, 83, 84, 85, 86, 87, 88, 89, 90
 ];
 var pickedNumbers = [];
-var switch1 = document.querySelector('input[type="checkbox"]');
-if (switch1.checked) {
-  console.log("start");
-} else {
-  console.log("stopped");
-}
-switch1.addEventListener('change', function() {
-  if (switch1.checked == true) {
-    setTimeout(function() {
-      for (var i = 0; i < numbers.length; i++) {
-        var toggleSwitch = document.querySelector('input[type="checkbox"]');
-        if (toggleSwitch.checked === true) {
-          if (toggleSwitch.checked === false) {
-            stopTask();
-            console.log("stopped");
-            break;
-          }else{
-            console.log("started");
-            task(i);
-            continue;
-          }
+  var  myVar;
+var toggleSwitch = document.querySelector('input[type="checkbox"]');
+toggleSwitch.addEventListener('change',function(){
 
-        } else {
-          console.log("not started yet");
-        }
+      if(toggleSwitch.checked){
+        console.log("state = automate");
+
+            myVar = setInterval(function(){
+                  nextSequence();
+            },7000);
+
       }
-    }, 5000);
-  }
+      else{
+         console.log("state = stopped");
+         stopAutomate();
+      }
 });
-
-function stopTask() {
-  clearTimeout(myVar);
+function stopAutomate(){
+  clearInterval(myVar);
 }
-
-function task(i) {
-  myVar = setTimeout(function() {
-    nextSequence();
-  }, 7000 * i);
-}
+console.log(toggleSwitch.checked);
 
 $(".roll").click(function() {
   nextSequence();
@@ -61,72 +43,10 @@ function nextSequence() {
   $(".a" + rolledNumber).removeClass("pressed");
   console.log(rolledNumber);
   $(".lastNumber").text(rolledNumber);
-  //  soundPlay(rolledNumber);
+  soundPlay(rolledNumber);
 }
 
-
-
-
-// toggleSwitch.addEventListener('change',function(){
-//   if(toggleSwitch.checked==true){
-//     console.log("checked");
-//     setTimeout(function(){
-//       console.log("started");
-//       for( let i =0 ; i<numbers.length ; i++){
-//         if(toggleSwitch.checked==true){
-//
-//               console.log(toggleSwitch.checked);
-//               task(i);
-//         }
-//         if(toggleSwitch.checked==false){
-//           console.log(toggleSwitch.checked);
-//           break;
-//         }
-//       }
-//
-//       function task(i){
-//         setTimeout(function (){
-//           var index = Math.floor(Math.random() * numbers.length);
-//           var rolledNumber = numbers[index];
-//           numbers.splice(index, 1);
-//           pickedNumbers.push(rolledNumber);
-//           $(".a" + rolledNumber).removeClass("pressed");
-//           console.log(rolledNumber);
-//           $(".lastNumber").text(rolledNumber);
-//         soundPlay(rolledNumber);
-//       },7000*i);
-//       }
-//     },5000);
-//
-//
-//   }
-//
-//
-// });
-
-//     $(".roll").click(function() {
-//       var index = Math.floor(Math.random() * numbers.length);
-//       var rolledNumber = numbers[index];
-//       numbers.splice(index, 1);
-//       pickedNumbers.push(rolledNumber);
-//       $(".a" + rolledNumber).removeClass("pressed");
-//       console.log(rolledNumber);
-//       $(".lastNumber").text(rolledNumber);
-//       soundPlay(rolledNumber);
-//     });
-//
-//
-// function soundPlay(name) {
-//   var audio = new Audio("sounds/a" + name + ".mp3");
-//   audio.play();
-// }
-
-
-
-//
-// function nextSequence(){
-//   var index = Math.floor(Math.random()* numbers.length);
-//   var rolledNumber = numbers[index];
-//   numbers.splice(index,1);
-//   pickedNumbers.push(rolledNumber);
-// }
+function soundPlay(name) {
+  var audio = new Audio("sounds/a" + name + ".mp3");
+  audio.play();
+}
