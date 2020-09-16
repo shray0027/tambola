@@ -9,7 +9,7 @@ This is an online random number speaker <a href="https://shray0027.github.io/tam
 <table>
 <thead>
 
-Desktop preview
+<caption>* Desktop preview *</caption>
 
 </thead>
 <tbody>
