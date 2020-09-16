@@ -1,14 +1,14 @@
 # Tambola
 
-## Version 1.0.0
+## VERSION 1.0.0
 This is an online random number speaker <a href="https://shray0027.github.io/tambola/">Tambola</a> for Tambola board game.
 
-# FEATURES
+## FEATURES
 * Toggle Switch to automate the picking and choosing of numbers with delay of 5 seconds.
 * Roll button if you want to manually  pick the numbers.
 
 
-# PREVIEW
+## PREVIEW
 <table>
 <thead>
 
